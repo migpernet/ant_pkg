@@ -1,0 +1,47 @@
+controller_manager:
+  ros__parameters:
+    # Controlador para o estado das juntas
+    joint_state_controller:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50  # Taxa de publicação em Hz
+
+    # Controladores de posição para cada junta do UR5
+    position_controllers:
+      type: position_controllers/JointTrajectoryController
+      joint_names:
+        - shoulder_pan_joint
+        - shoulder_lift_joint
+        - elbow_joint
+        - wrist_1_joint
+        - wrist_2_joint
+        - wrist_3_joint
+      state_interface: position
+      command_interface: position
+      gains:
+        shoulder_pan_joint: {p: 100.0, d: 1.0}
+        shoulder_lift_joint: {p: 100.0, d: 1.0}
+        elbow_joint: {p: 100.0, d: 1.0}
+        wrist_1_joint: {p: 100.0, d: 1.0}
+        wrist_2_joint: {p: 100.0, d: 1.0}
+        wrist_3_joint: {p: 100.0, d: 1.0}
+      trajectory:
+        type: trajectory_msgs/JointTrajectory
+        goal_time_tolerance: 0.5
+        path_tolerance: 0.01
+        max_velocity_scaling_factor: 0.5
+        max_acceleration_scaling_factor: 0.5
+  
+  
+    # Controlador de esforço (opcional) - não utilizado diretamente aqui, mas pode ser configurado conforme necessário
+    
+#    effort_controllers:
+#      type: effort_controllers/JointEffortController
+#      joint_names:
+#        - shoulder_pan_joint
+#        - shoulder_lift_joint
+#        - elbow_joint
+#        - wrist_1_joint
+#        - wrist_2_joint
+#        - wrist_3_joint
+#      state_interface: effort
+#      command_interface: effort
