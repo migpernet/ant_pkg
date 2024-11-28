@@ -8,9 +8,16 @@ project(ant_pkg)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  control_msgs
+  controller_manager
+  geometry_msgs
+  joint_state_controller
+  joint_trajectory_controller
   rospy
+  sensor_msgs
   std_msgs
+  trajectory_msgs
+  ur_robot_driver
 )
 
 ## System dependencies are found with CMake's conventions
@@ -70,7 +77,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs
+#   control_msgs#   geometry_msgs#   sensor_msgs#   std_msgs#   trajectory_msgs
 # )
 
 ################################################
@@ -105,7 +112,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ant_pkg
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  CATKIN_DEPENDS control_msgs controller_manager geometry_msgs joint_state_controller joint_trajectory_controller rospy roscpp sensor_msgs std_msgs trajectory_msgs ur_robot_driver
 #  DEPENDS system_lib
 )
 
