@@ -7,7 +7,7 @@ def set_initial_positions():
     rospy.init_node('set_initial_positions')
     
     # Publicador para o controlador de trajetória
-    pub = rospy.Publisher('/joint_trajectory_controller/command', JointTrajectory, queue_size=10)
+    pub = rospy.Publisher('/eff_joint_traj_controller/command', JointTrajectory, queue_size=10)
     
     # Aguardar o publicador estar ativo
     rospy.sleep(1)
@@ -25,7 +25,7 @@ def set_initial_positions():
 
     # Definir posições
     point = JointTrajectoryPoint()
-    point.positions = [0.0, -1.57, 1.57, 0.0, 0.0, 0.0]  # Posições em radianos
+    point.positions = [0.0, -1.57, 0.0, 0.0, 0.0, 0.0]  # Posições em radianos
     point.time_from_start = rospy.Duration(3.0)  # Tempo para alcançar a posição
 
     traj.points.append(point)
